@@ -9,6 +9,7 @@ using Eigen::Dynamic;
 
 namespace types {
 	using neuron_t = float;
+	using Batch = Matrix<neuron_t, Dynamic, Dynamic>;
 
 	using MatrixXneu = Matrix<neuron_t, Dynamic, Dynamic>;
 	using VectorXneu = Vector<neuron_t, Dynamic>;

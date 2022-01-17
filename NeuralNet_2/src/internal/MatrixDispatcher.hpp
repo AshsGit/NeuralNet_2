@@ -2,8 +2,11 @@
 
 
 #include <Eigen/Dense>
+#include <vector>
 
 #include "./types.hpp"
+
+using std::vector;
 
 /*
 Cannot make this static size as this would cause too many issues considering the network is constructed at runtime
@@ -14,7 +17,14 @@ Consequences:
 */
 class MatrixDispatcher
 {
+	vector<types::MatrixXneu> _matrices;
+	vector<types::MatrixXneu>::iterator _iterator;
+	bool _reversed = false;
+	size_t _batch_size;
+
 public:
+	MatrixDispatcher(Layer& layer);
+
 	types::MatrixXneu& input();
 	types::MatrixXneu& output();
 

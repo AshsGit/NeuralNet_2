@@ -3,14 +3,9 @@
 #include "../internal/MatrixDispatcher.hpp"
 #include "../../internal/types.hpp"
 
+#include "../Layer.hpp"
 #include "./BiasLayer.hpp"
 
-
-
-void BiasLayer::setLearningRate(types::neuron_t lr)
-{
-	this->_learning_rate = lr; // scalling cannot happen until batch size is known so cant reduce scalling overhead :(
-}
 
 
 void BiasLayer::forward_prop(MatrixDispatcher& disp) 

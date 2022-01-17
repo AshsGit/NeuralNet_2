@@ -7,7 +7,7 @@ class NormLayer : public Layer
 private:
 
 protected:
-
+	
 public:
 
 };

@@ -17,13 +17,11 @@ class FCLayer : public Layer
 	types::neuron_t _learning_rate;
 
 public:
-	FCLayer(types::MatrixXneu& initWeights) : _weights(initWeights) {};
-
-	void setLearningRate(types::neuron_t lr);
+	FCLayer(types::MatrixXneu& initWeights, types::neuron_t learning_rate) : 
+		_weights(initWeights), _learning_rate(learning_rate) {};
 
 	void forward_prop(MatrixDispatcher& dispatcher);
 	void backward_prop(MatrixDispatcher& dispatcher);
 };
 
 
-#include "./FCLayer.cpp"

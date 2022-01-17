@@ -2,9 +2,21 @@
 
 #include "../internal/MatrixDispatcher.hpp"
 
+#include <vector>
+using std::vector;
+
+
 class Layer
 {
+protected:
+	enum _LayerType {Layer, Container};
+	inline _LayerType layer_type() { return _LayerType::Layer };
+
+	vector<size_t> _dimensions;
+
 public:
+	Layer(size_t in, size_t out) : _dimensions({in, out}) {};
+
 	/*
 	forward_prop should use the input vector from the provided dispatcher to genrate an 
 	output vector which can be written to the dispatcher.
@@ -27,4 +39,6 @@ public:
 	pre-allocated dispatcher input and output vectors for all calculations to avoid unnecessary memory allocation and copying.
 	*/
 	virtual void backward_prop(MatrixDispatcher& dispatcher) = 0;
+
+	inline const vector<size_t> dimensions();
 };

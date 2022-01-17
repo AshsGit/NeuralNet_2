@@ -3,6 +3,7 @@
 #include "../../internal/MatrixDispatcher.hpp"
 #include "../../internal/types.hpp"
 
+#include "../Layer.hpp"
 #include "./ReLuLayer.hpp"
 
 

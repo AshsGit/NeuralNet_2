@@ -11,16 +11,14 @@
 using std::vector;
 
 
+void Chain::_add_layers_imp(vector<Layer> layers) {
+	this->layers.insert(this->layers.end(), layers.begin(), layers.end());
+};
+
+
 Chain::Chain(vector<Layer> layers) {
-	for (auto layer : layers) {
-		if (typeid(layer) == typeid(Chain)) { // TODO: Is type comparison slow in c++? if so find another solution/re-design.
-			for (auto sublayer : static_cast<Chain*>(&layer)->layers)
-				this->layers.push_back(sublayer);
-		}
-		else
-			this->layers.push_back(layer);
-	}
-}
+	this->add_layers(layers);
+};
 
 
 void Chain::forward_prop(MatrixDispatcher& disp)

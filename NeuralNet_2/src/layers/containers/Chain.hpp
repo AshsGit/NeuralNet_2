@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../../internal/MatrixDispatcher.hpp"
-#include "../Layer.hpp"
+#include "../Container.hpp"
 
 #include <vector>
 
@@ -9,15 +9,22 @@
 using std::vector;
 
 
-class Chain : public Layer
+class Chain : public Container
 {
 protected:
-	vector<Layer> layers;
+	void _add_layers_imp(vector<Layer> layers);
 
 public:
-	Chain(vector<Layer>& layers);
+	Chain(vector<Layer> layers);
 
+	/*
+	This method forward propogates through all sub-layers of the chain.
+	*/
 	void forward_prop(MatrixDispatcher& dispatcher);
+
+	/*
+	This method back propogates through all sub-layers of the chain.
+	*/
 	void backward_prop(MatrixDispatcher& dispatcher);
 };
 
